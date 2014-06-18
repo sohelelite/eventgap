@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+{% include '../includes/head.html' %}
+
+<body class="skin-blue">
+    <header
+            class="header"
+            data-ng-include="'/public/system/views/header.html'"
+            data-role="navigation"></header>
+
+
+        <div>
+            {% block content %}{% endblock %}
+        </div>
+
+    {% include '../includes/foot.html' %}
+</body>
+
+</html>

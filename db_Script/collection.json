@@ -1,0 +1,23 @@
+{
+    "_id" : ObjectId("53a025ea93180f1f1acb0b2f"),
+"name" : "Admin Menu",
+"desc" : "List of all administrator menu",
+"model" : "AdminMenu",
+"isActive" : true
+}
+
+{
+"_id" : ObjectId("53a132e64a66c348e3320f3c"),
+"name" : "Form",
+"desc" : "List of all administrator form",
+"model" : "Form",
+"isActive" : true
+}
+
+{
+"_id" : ObjectId("53a133044a66c348e3320f3d"),
+"name" : "Form Structure",
+"desc" : "List of all form structure",
+"model" : "FormStructure",
+"isActive" : true
+}
