@@ -1,0 +1,38 @@
+<div data-ng-controller="TicketTypesController">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Ticket Type</h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-primary">
+
+            <div class="box-header">
+                <div class="alert alert-danger animated fadeIn" ng-show="errorMessage">
+                    <i class="fa fa-ban"></i>
+                    <b>Alert!</b> {{ errorMessage }}
+                </div>
+            </div>
+
+            <form name="ticketTypeForm" data-ng-submit="create(ticketTypeForm.$valid)" novalidate>
+                <div class="box-body">
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && ticketTypeForm.name.$invalid }">
+                        <label for="name">Name</label>
+                        <input name="name" type="text" class="form-control" data-ng-model="name" id="name" placeholder="Name" required>
+                        <div ng-show="submitted && ticketTypeForm.name.$invalid" class="help-block">
+                            <p ng-show="ticketTypeForm.name.$error.required">Name is required</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a class="btn btn-default" href="/#!/admin/ticket-types/list">Cancel</a>
+                </div>
+            </form>
+
+        </div>
+
+    </section><!-- /.content -->
+</div>
