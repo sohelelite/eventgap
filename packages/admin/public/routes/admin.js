@@ -41,7 +41,7 @@ angular.module('mean.admin').config(['$stateProvider', '$urlRouterProvider',
         })
 
         .state('create',{
-            url: '/admin/:formName/create',
+            url: '/admin/form/create',
             views:{
                 ''                  : { templateUrl: 'admin/views/index.html' },
                 'menu@create'       : { templateUrl: 'admin/views/includes/menu.html' },

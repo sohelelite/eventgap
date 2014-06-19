@@ -12,9 +12,6 @@ angular.module('mean.admin').controller('IndexController', ['$scope', 'Global',
             angular.element(this).removeClass('hover');
         });
 
-        /* Sidebar tree view */
-        angular.element('.sidebar .treeview').tree();
-
         /*
          * We are gonna initialize all checkbox and radio inputs to
          * iCheck plugin in.

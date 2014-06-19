@@ -1032,6 +1032,11 @@ body > .header .logo .icon {
 .form-group.has-error label {
   color: #f56954;
 }
+
+.form-group.has-error .help-block{
+    color: #f56954 !important;
+}
+
 .form-group.has-error .form-control {
   border-color: #f56954 !important;
   box-shadow: none;
