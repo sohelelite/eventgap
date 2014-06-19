@@ -1,0 +1,53 @@
+<div data-ng-controller="UsersController" data-ng-init="find()">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>User</h1>
+
+        <ol class="breadcrumb">
+            <li>
+                <a href="/#!/admin/users/create">
+                    <i class="fa fa-plus"></i> Add
+                </a>
+            </li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <div class="box-header">
+                <div class="alert alert-info animated fadeIn" data-ng-hide="!users || users.length">
+                    <i class="fa fa-info"></i>
+                    <b>Alert!</b> No User Found
+                </div>
+            </div>
+
+            <div class="box-body">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody data-ng-repeat="user in users">
+                        <tr>
+                            <td>{{ user.name }}</td>
+                            <td>
+                                <a class="btn btn-sm btn-info" href="/#!/admin/users/{{user._id}}/edit">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
