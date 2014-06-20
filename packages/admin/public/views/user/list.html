@@ -30,12 +30,14 @@
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Email</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody data-ng-repeat="user in users">
                         <tr>
                             <td>{{ user.name }}</td>
+                            <td>{{ user.email }}</td>
                             <td>
                                 <a class="btn btn-sm btn-info" href="/#!/admin/users/{{user._id}}/edit">
                                     <i class="fa fa-edit"></i>

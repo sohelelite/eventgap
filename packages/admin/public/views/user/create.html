@@ -18,6 +18,7 @@
             </div>
 
             <form name="userForm" data-ng-submit="create(userForm.$valid)" novalidate>
+
                 <div class="box-body">
                     <div class="form-group" ng-class="{ 'has-error' : submitted && userForm.name.$invalid }">
                         <label for="name">Name</label>
@@ -26,10 +27,39 @@
                             <p ng-show="userForm.name.$error.required">Name is required</p>
                         </div>
                     </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && userForm.username.$invalid }">
+                        <label for="username">User Name</label>
+                        <input name="username" type="text" class="form-control" data-ng-model="username" id="username" placeholder="User Name" ng-maxlength="20" required>
+                        <div ng-show="submitted && userForm.username.$invalid" class="help-block">
+                            <p ng-show="userForm.username.$error.required">User Name is required</p>
+                            <p ng-show="userForm.username.$error.maxlength" class="help-block">Username cannot be more than 20 characters</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && userForm.email.$invalid }">
+                        <label for="email">Email</label>
+                        <input name="email" type="email" class="form-control" data-ng-model="email" id="email" placeholder="Email" required>
+                        <div ng-show="submitted && userForm.email.$invalid" class="help-block">
+                            <p ng-show="userForm.email.$error.required">Email is required</p>
+                            <p ng-show="userForm.email.$error.email">Enter a valid email address</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && userForm.password.$invalid }">
+                        <label for="password">Password</label>
+                        <input name="password" type="password" class="form-control" data-ng-model="password" id="password" ng-minlength="8" required>
+                        <div ng-show="submitted && userForm.password.$invalid" class="help-block">
+                            <p ng-show="userForm.email.password.required">Password is required</p>
+                            <p ng-show="userForm.email.password.minlength">Password must be between 8-20 characters long</p>
+                        </div>
+                    </div>
+
+
                 </div>
 
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Submit</button>
                     <a class="btn btn-default" href="/#!/admin/users/list">Cancel</a>
                 </div>
             </form>

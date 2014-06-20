@@ -12,12 +12,17 @@ var mongoose    = require('mongoose'),
  * Find user by id
  */
 exports.user = function(req, res, next, id) {
-    User.load(id, function(err, user) {
-        if (err) return next(err);
-        if (!user) return next(new Error('Failed to load user ' + id));
-        req.user = user;
-        next();
-    });
+    User
+        .findOne({
+            _id: id
+        })
+        .exec(function(err, user) {
+            if (err) return next(err);
+            if (!user) return next(new Error('Failed to load User ' + id));
+            req.user = user;
+            next();
+        });
+
 };
 
 /**
@@ -32,7 +37,7 @@ exports.create = function(req, res) {
             switch(err.code){
                 case 11000:
                 case 11001:
-                    errorMsg = 'Name already exsits.';
+                    errorMsg = 'Username already taken';
                     break;
                 default:
                     errorMsg ='Error occured while processing your request.';

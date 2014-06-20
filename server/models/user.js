@@ -135,13 +135,4 @@ UserSchema.methods = {
     }
 };
 
-/**
- * Statics
- */
-UserSchema.statics.load = function(id, cb) {
-    this.findOne({
-        _id: id
-    }).exec(cb);
-};
-
 mongoose.model('User', UserSchema);

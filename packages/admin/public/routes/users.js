@@ -49,7 +49,7 @@ angular.module('mean.admin').config(['$stateProvider',
             })
 
             .state('editUsers', {
-                url                              : '/admin/users/:usersId/edit',
+                url                              : '/admin/users/:userId/edit',
                 views:{
                     ''                           : { templateUrl: 'admin/views/index.html' },
                     'menu@editUsers'             : { templateUrl: 'admin/views/includes/menu.html' },

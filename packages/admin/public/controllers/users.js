@@ -13,7 +13,13 @@ angular.module('mean.admin').controller('UsersController',['$scope', '$statePara
             if (isValid)
             {
                 var user = new Users({
-                    name: this.name
+                    name            : this.name,
+                    username        : this.username,
+                    email           : this.email,
+                    password        : this.password,
+                    confirmPassword : this.password,
+                    provider        : 'local',
+                    roles           : ['authenticated']
                 });
                 user.$save(function(response) {
                     $location.url('/admin/users/list?message=created');
@@ -48,11 +54,15 @@ angular.module('mean.admin').controller('UsersController',['$scope', '$statePara
         };
 
         $scope.findOne = function() {
-    Users.get({
-        userId: $stateParams.userId
-    }, function(user) {
-        $scope.user = user;
-    });
+            Users.get(
+                {
+                    userId: $stateParams.userId
+                },
+                function(user)
+                {
+                    $scope.user = user;
+                }
+            );
 };
 
     }
