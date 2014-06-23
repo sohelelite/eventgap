@@ -16,14 +16,6 @@ Admin.register(function(app, auth, database) {
     //We enable routing. By default the Package Object is passed to the routes
     Admin.routes(app, auth, database);
 
-    //We are adding a link to the main menu for all authenticated users
-    Admin.menus.add({
-        title: 'admin example page',
-        link: 'admin example page',
-        roles: ['authenticated'],
-        menu: 'main'
-    });
-
     /**
     //Uncomment to use. Requires meanio@0.3.7 or above
     // Save settings with callback
