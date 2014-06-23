@@ -21,4 +21,8 @@ module.exports = function(Users, app, auth) {
 
     // Finish with setting up the articleId param
     app.param('userId', users.user);
+
+    //REST API
+
+
 };

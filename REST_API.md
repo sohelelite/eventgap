@@ -8,9 +8,10 @@ Version
 
 1.0
 
-| Route   	    |      HTTP Verb    |  Description 	|
-|:----------:	|:-------------:	|:------:	    |
-| col 1 is 	    |  left-aligned 	| $1600 	    |
-| col 2 is 	    |    centered   	|   $12     	|
-| col 3 is 	    | right-aligned 	|    $1 	    |
-| col 4 is extr | letst do it       | $12344rfff    |
+| Route   	            |      HTTP Verb    |  Description 	                            |
+|:----------:	        |:-------------:	|:------:	                                |
+| /login 	            |  POST  	        | Authentication of users (Sign In) 	    |
+| /register 	        |  POST   	        | Create a bear     	                    |
+| /api/bears	        |  GET 	            | Get a single bear 	                    |
+| /api/bears/:bear_id   |  PUT              | Update a bear with new info               |
+| /api/bears/:bear_id   |  DELETE           | Delete a bear                             |
