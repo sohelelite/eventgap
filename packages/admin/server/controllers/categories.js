@@ -24,7 +24,6 @@ exports.category = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
     var category = new Category(req.body);
-
     category.save(function(err) {
         var errorMsg = '';
         if (err) {
@@ -79,6 +78,21 @@ exports.show = function(req, res) {
  */
 exports.all = function(req, res) {
     Category.find().exec(function(err, category) {
+        if (err) {
+            return res.jsonp(500, {
+                error: 'Cannot list the category'
+            });
+        }
+        res.jsonp(category);
+    });
+};
+
+/****
+ * Get Category By Parent Name
+ */
+exports.parent = function(req, res) {
+    console.log(req.params.parentName);
+    Category.find({ 'parent' : req.params.parentName }).exec(function(err, category) {
         if (err) {
             return res.jsonp(500, {
                 error: 'Cannot list the category'

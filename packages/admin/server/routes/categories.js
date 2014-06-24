@@ -21,4 +21,15 @@ module.exports = function(Categories, app, auth) {
 
     // Finish with setting up the articleId param
     app.param('categoryId', categories.category);
+
+    //REST API
+    app.route('/api/categories')
+        .get(categories.all)
+        .post(categories.create);
+    app.route('/api/categories/:categoryId')
+        .get(categories.show)
+        .put(categories.update);
+    app.route('/api/categories/parent:parentName')
+        .get(categories.parent);
+
 };
