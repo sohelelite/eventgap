@@ -13,4 +13,9 @@ module.exports = function(Events, app, auth) {
 
     // Finish with setting up the eventId param
     app.param('eventId', events.event);
+
+    //REST API
+    app.route('/api/events')
+        .get(events.all);
+
 };

@@ -13,4 +13,8 @@ module.exports = function(Organizers, app, auth) {
 
     // Finish with setting up the organizerId param
     app.param('organizerId', organizers.organizer);
+
+    //REST API
+    app.route('/api/organizers')
+        .get(organizers.all);
 };

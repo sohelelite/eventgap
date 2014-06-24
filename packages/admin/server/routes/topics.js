@@ -13,4 +13,9 @@ module.exports = function(Topics, app, auth) {
 
     // Finish with setting up the topicId param
     app.param('topicId', topics.topic);
+
+    //REST API
+    app.route('/api/topics')
+        .get(topics.all);
+
 };
