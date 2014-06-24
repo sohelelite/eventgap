@@ -17,6 +17,11 @@ var TopicSchema = new Schema({
         trim        : true
     },
 
+    parent:{
+        type        : String,
+        index       : true
+    },
+
     isActive :{
         type        : Boolean,
         default     : true

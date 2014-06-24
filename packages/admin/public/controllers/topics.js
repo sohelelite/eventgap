@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('mean.admin').controller('CategoriesController',['$scope', '$stateParams', '$location', 'Global', 'Categories',
-    function ($scope, $stateParams, $location, Global, Categories) {
+angular.module('mean.admin').controller('TopicsController',['$scope', '$stateParams', '$location', 'Global', 'Topics',
+    function ($scope, $stateParams, $location, Global, Topics) {
 
         $scope.global = Global;
 
@@ -12,17 +12,17 @@ angular.module('mean.admin').controller('CategoriesController',['$scope', '$stat
         $scope.create = function(isValid) {
             if (isValid)
             {
-                var category = new Categories({
+                var topic = new Topics({
                     name    : this.name
                 });
 
                 if(!angular.isUndefined(this.parent))
                 {
-                    category.parent = this.parent.name;
+                    topic.parent = this.parent.name;
                 }
 
-                category.$save(function(response) {
-                    $location.url('/admin/categories/list?message=created');
+                topic.$save(function(response) {
+                    $location.url('/admin/topics/list?message=created');
                 }, function (error) {
                     $scope.errorMessage = error.data;
                 });
@@ -35,9 +35,9 @@ angular.module('mean.admin').controller('CategoriesController',['$scope', '$stat
 
         $scope.update = function(isValid) {
             if (isValid) {
-                var category = $scope.category;
-                category.$update(function(response) {
-                    $location.url('/admin/categories/list?message=updated');
+                var topic = $scope.topic;
+                topic.$update(function(response) {
+                    $location.url('/admin/topics/list?message=updated');
                 }, function (error) {
                     $scope.errorMessage = error.data;
                 });
@@ -47,16 +47,16 @@ angular.module('mean.admin').controller('CategoriesController',['$scope', '$stat
         };
 
         $scope.find = function() {
-            Categories.query(function(categories) {
-                $scope.categories = categories;
+            Topics.query(function(topics) {
+                $scope.topics = topics;
             });
         };
 
         $scope.findOne = function() {
-            Categories.get({
-                categoryId: $stateParams.categoryId
-            }, function(category) {
-                $scope.category = category;
+            Topics.get({
+                topicId: $stateParams.topicId
+            }, function(topic) {
+                $scope.topic = topic;
             });
         };
 
@@ -66,7 +66,7 @@ angular.module('mean.admin').controller('CategoriesController',['$scope', '$stat
         };
 
         $scope.initializeCreate = function () {
-           $scope.find();
+            $scope.find();
         };
     }
 ]);

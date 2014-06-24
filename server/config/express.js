@@ -62,6 +62,22 @@ module.exports = function(app, passport, db) {
     // Enable jsonp
     app.enable('jsonp callback');
 
+    //Enable CORS /* Insert by Sohel */
+    function allowCrossDomain(req, res, next) {
+        res.header('Access-Control-Allow-Origin', req.headers.origin);
+        res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+        res.header('Access-Control-Allow-Credentials', false);
+        res.header('Access-Control-Max-Age', '86400');
+        res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+        next();
+    }
+    app.use(allowCrossDomain);
+
+    app.options('*', function(req, res) {
+        res.send(200);
+    });
+
+
     // The cookieParser should be above session
     app.use(cookieParser());
 

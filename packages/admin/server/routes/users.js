@@ -10,7 +10,7 @@ var hasAuthorization = function(req, res, next) {
     next();
 };
 
-module.exports = function(Users, app, auth) {
+module.exports = function(Users, app, auth, passport) {
 
     app.route('/users')
         .get(users.all)
@@ -21,8 +21,5 @@ module.exports = function(Users, app, auth) {
 
     // Finish with setting up the articleId param
     app.param('userId', users.user);
-
-    //REST API
-
 
 };

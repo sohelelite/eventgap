@@ -1,0 +1,52 @@
+<div data-ng-controller="CategoriesController" ng-init="initializeEdit()">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Category</h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-primary">
+
+            <div class="box-header">
+                <div class="alert alert-danger animated fadeIn" ng-show="errorMessage">
+                    <i class="fa fa-ban"></i>
+                    <b>Alert!</b> {{ errorMessage }}
+                </div>
+            </div>
+
+            <form name="categoryForm" data-ng-submit="update(categoryForm.$valid)" novalidate>
+                <div class="box-body">
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && categoryForm.name.$invalid }">
+                        <label for="name">Name</label>
+                        <input name="name" type="text" class="form-control" data-ng-model="category.name" id="name" placeholder="Name" required>
+                        <div ng-show="submitted && categoryForm.name.$invalid" class="help-block">
+                            <p ng-show="categoryForm.name.$error.required">Name is required</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="parent">Parent</label>
+                        <select name="parent" id="parent" class="form-control"
+                                ng-model="category.parent"
+                                ng-options="category.name for category in categories">
+                            <option value="">---- Select Category ----</option>
+                        </select>
+                    </div>
+
+                    <div class="checkbox">
+                        <input type="checkbox" ng-model="category.isActive"/> Active
+                    </div>
+
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" ng-disabled="categoryForm.$invalid">Submit</button>
+                    <a class="btn btn-default" href="/#!/admin/categories/list">Cancel</a>
+                </div>
+            </form>
+
+        </div>
+
+    </section><!-- /.content -->
+</div>

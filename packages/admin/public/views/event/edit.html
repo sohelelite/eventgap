@@ -1,0 +1,117 @@
+<div data-ng-controller="EventsController" ng-init="initializeEdit()">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Event</h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-primary">
+
+            <div class="box-header">
+                <div class="alert alert-danger animated fadeIn" ng-show="errorMessage">
+                    <i class="fa fa-ban"></i>
+                    <b>Alert!</b> {{ errorMessage }}
+                </div>
+            </div>
+
+            <form name="eventForm" data-ng-submit="update(eventForm.$valid)" novalidate>
+                <div class="box-body">
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && eventForm.title.$invalid }">
+                        <label for="title">Title</label>
+                        <input name="title" type="text" class="form-control" data-ng-model="event.title" id="title" placeholder="Title" required>
+                        <div ng-show="submitted && eventForm.title.$invalid" class="help-block">
+                            <p ng-show="eventForm.title.$error.required">Title is required</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && eventForm.allias.$invalid }">
+                        <label for="allias">Allias</label>
+                        <input name="allias" type="text" class="form-control" data-ng-model="event.allias" id="allias" placeholder="Allias" required>
+                        <div ng-show="submitted && eventForm.allias.$invalid" class="help-block">
+                            <p ng-show="eventForm.allias.$error.required">Allias is required</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && eventForm.organizer.$invalid }">
+                        <label for="organizer">Organizer</label>
+                        <select name="organizer" id="organizer" class="form-control"
+                                data-ng-model="organizer"
+                                ng-options="organizer.name for organizer in organizers" required>
+                            <option value="">---- Select Organizer ----</option>
+                        </select>
+                        <div ng-show="submitted && eventForm.organizer.$invalid" class="help-block">
+                            <p ng-show="eventForm.organizer.$error.required">Organizer is required</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="longitude">Longitude</label>
+                        <input type="text" name="longitude" id="longitude" ng-model="event.longitude" placeholder="Longitude" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="latitude">Latitude</label>
+                        <input type="text" name="latitude" id="latitude" ng-model="event.latitude" placeholder="Latitude" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="venue">Venue</label>
+                        <input type="text" name="venue" id="venue" ng-model="event.venue" placeholder="Venue" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <input type="text" name="startDate" id="startDate" ng-model="event.startDate" class="form-control"
+                                           datepicker-popup="{{format}}" is-open="openedStartDate"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openStartDate($event)">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                      </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <input type="text" name="endDate" id="endDate" ng-model="event.endDate" class="form-control"
+                                            datepicker-popup="{{ format }}" is-open="openedEndDate"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openEndDate($event)">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="logo">Logo</label>
+                        <input type="text" name="logo" id="logo" ng-model="event.logo" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" data-ng-model="event.description" placeholder="Enter Description" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" ng-disabled="eventForm.$invalid">Submit</button>
+                    <a class="btn btn-default" href="/#!/admin/events/list">Cancel</a>
+                </div>
+            </form>
+
+        </div>
+
+    </section><!-- /.content -->
+</div>

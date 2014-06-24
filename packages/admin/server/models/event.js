@@ -22,26 +22,47 @@ var EventSchema = new Schema({
         unique      : true,
         trim        : true
     },
-    lat:{
-        type        : String
+
+    longitude:{
+        type        : Number
     },
-    long:{
-        type        : String
+
+    latitude :{
+        type        : Number
     },
+
     venue:{
         type        : String
     },
     startDate:{
-        type        : Date
+        type        : Date,
+        default     : Date.now
     },
     endDate:{
-        type        : Date
+        type        : Date,
+        default     : Date.now
     },
     logo:{
         type        : String
     },
     description :{
         type        : String
+    },
+    organizer :{
+        type        : Schema.ObjectId,
+        ref         : 'Organizer'
+    },
+    category:{
+        type        : Schema.ObjectId,
+        ref         : 'Category'
+    },
+    topic:{
+        type        : Schema.ObjectId,
+        ref         : 'Topic'
+    },
+    listingType :{
+        type        : String,
+        enum        : ['Public', 'Private']
     },
     showRemainingTicket:{
         type        : Boolean
