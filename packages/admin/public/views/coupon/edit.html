@@ -1,0 +1,110 @@
+<div data-ng-controller="CouponsController" ng-init="initializeEdit()">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Coupon</h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-primary">
+
+            <div class="box-header">
+                <div class="alert alert-danger animated fadeIn" ng-show="errorMessage">
+                    <i class="fa fa-ban"></i>
+                    <b>Alert!</b> {{ errorMessage }}
+                </div>
+            </div>
+
+            <form name="couponForm" data-ng-submit="update(couponForm.$valid)" novalidate>
+                <div class="box-body">
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && couponForm.name.$invalid }">
+                        <label for="name">Name</label>
+                        <input name="name" type="text" class="form-control" data-ng-model="coupon.name" id="name" placeholder="Enter Name" required>
+                        <div ng-show="submitted && couponForm.name.$invalid" class="help-block">
+                            <p ng-show="couponForm.name.$error.required">Name is required</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="code">Code</label>
+                        <input type="text" name="code" id="code" ng-model="coupon.code" placeholder="Code" class="form-control" valid-number/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="text" name="amount" id="amount" ng-model="coupon.amount" placeholder="Amount" class="form-control" valid-number/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="percent">Percent</label>
+                        <input type="text" name="percent" id="percent" ng-model="coupon.percent" placeholder="Percent" class="form-control" valid-number/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="min">Minumum Ticket Allowed</label>
+                        <input type="text" name="min" id="min" ng-model="coupon.min" placeholder="Minimum Ticket" class="form-control" valid-number/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="max">Maximum Ticket Allowed</label>
+                        <input type="text" name="max" id="max" ng-model="coupon.max" placeholder="Maximum Ticket" class="form-control" valid-number/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <input type="text" name="startDate" id="startDate" ng-model="coupon.startDate" class="form-control"
+                                           datepicker-popup="{{format}}" is-open="openedStartDate"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openStartDate($event)">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                      </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <input type="text" name="endDate" id="endDate" ng-model="coupon.endDate" class="form-control"
+                                           datepicker-popup="{{ format }}" is-open="openedEndDate"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openEndDate($event)">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && couponForm.eventTicket.$invalid }">
+                        <label for="eventTicket">Event Ticket</label>
+                        <select name="eventTicket" id="eventTicket" class="form-control"
+                                data-ng-model="eventTicket"
+                                ng-options="eventTicket._id as eventTicket.ticket for eventTicket in eventTickets" required>
+                            <option value="">---- Select Organizer ----</option>
+                        </select>
+                        <div ng-show="submitted && couponForm.eventTicket.$invalid" class="help-block">
+                            <p ng-show="couponForm.eventTicket.$error.required">Event Ticket is required</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" ng-disabled="couponForm.$invalid">Submit</button>
+                    <a class="btn btn-default" href="/#!/admin/coupons/list">Cancel</a>
+                </div>
+            </form>
+
+        </div>
+
+    </section><!-- /.content -->
+</div>

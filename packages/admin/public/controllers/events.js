@@ -84,15 +84,20 @@ angular.module('mean.admin').controller('EventsController',['$scope', '$statePar
 
         $scope.initializeEdit = function () {
             $scope.findOne();
-            $scope.find();
+            $scope.initializeFormControl();
         };
 
         $scope.initializeCreate = function () {
             $scope.find();
+            $scope.initializeFormControl();
+        };
+
+        $scope.initializeFormControl = function () {
 
             Organizers.query(function(organizers) {
                 $scope.organizers = organizers;
             });
+
         };
     }
 ]);

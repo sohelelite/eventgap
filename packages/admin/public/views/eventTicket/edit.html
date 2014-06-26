@@ -1,0 +1,133 @@
+<div data-ng-controller="EventTicketsController" ng-init="initializeEdit()">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Event Ticket</h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-primary">
+
+            <div class="box-header">
+                <div class="alert alert-danger animated fadeIn" ng-show="errorMessage">
+                    <i class="fa fa-ban"></i>
+                    <b>Alert!</b> {{ errorMessage }}
+                </div>
+            </div>
+
+            <form name="eventTicketForm" data-ng-submit="update(eventTicketForm.$valid)" novalidate>
+
+                <div class="box-body">
+
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && eventTicketForm.event.$invalid }">
+                        <label for="event">Event</label>
+                        <select name="event" id="event" class="form-control"
+                                data-ng-model="eventTicket.event"
+                                ng-options="event._id as event.title for event in events"
+                                required>
+                            <option value="">---- Select Event ----</option>
+                        </select>
+                        <div ng-show="submitted && eventTicketForm.event.$invalid" class="help-block">
+                            <p ng-show="eventTicketForm.event.$error.required">Event is required</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && eventTicketForm.ticket.$invalid }">
+                        <label for="ticket">Ticket</label>
+                        <input name="ticket" type="text" class="form-control" data-ng-model="eventTicket.ticket" id="ticket" placeholder="Ticket" required>
+                        <div ng-show="submitted && eventTicketForm.ticket.$invalid" class="help-block">
+                            <p ng-show="eventTicketForm.ticket.$error.required">Ticket is required</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && eventTicketForm.name.$invalid }">
+                        <label for="name">Name</label>
+                        <input name="name" type="text" class="form-control" data-ng-model="eventTicket.name" id="name" placeholder="Name" required>
+                        <div ng-show="submitted && eventTicketForm.name.$invalid" class="help-block">
+                            <p ng-show="eventTicketForm.name.$error.required">Name is required</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea name="description" id="description" data-ng-model="eventTicket.description" placeholder="Enter Description" class="form-control"></textarea>
+                    </div>
+
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && eventTicketForm.ticketType.$invalid }">
+                        <label for="ticketType">Ticket Type</label>
+                        <select name="ticketType" id="ticketType" class="form-control"
+                                data-ng-model="eventTicket.ticketType"
+                                ng-options="ticketType._id as ticketType.name for ticketType in ticketTypes" required>
+                            <option value="">---- Select Ticket Type ----</option>
+                        </select>
+                        <div ng-show="submitted && eventTicketForm.ticketType.$invalid" class="help-block">
+                            <p ng-show="eventTicketForm.ticketType.$error.required">Ticket Type is required</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="text" name="amount" id="amount" ng-model="eventTicket.amount" placeholder="amount" class="form-control"  valid-number/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="text" name="quantity" id="quantity" ng-model="eventTicket.quantity" placeholder="Quantity" class="form-control"  valid-number/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="startDate">Start Date</label>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <input type="text" name="startDate" id="startDate" ng-model="eventTicket.startDate" class="form-control"
+                                           datepicker-popup="{{format}}" is-open="openedStartDate"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openStartDate($event)">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                      </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="endDate">End Date</label>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <input type="text" name="endDate" id="endDate" ng-model="eventTicket.endDate" class="form-control"
+                                           datepicker-popup="{{ format }}" is-open="openedEndDate"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openEndDate($event)">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="min">Minumum Ticket Allowed</label>
+                        <input type="text" name="min" id="min" ng-model="eventTicket.min" placeholder="Minimum Ticket" class="form-control" valid-number/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="max">Maximum Ticket Allowed</label>
+                        <input type="text" name="max" id="max" ng-model="eventTicket.max" placeholder="Maximum Ticket" class="form-control" valid-number/>
+                    </div>
+
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" ng-disabled="eventTicketForm.$invalid">Submit</button>
+                    <a class="btn btn-default" href="/#!/admin/event-tickets/list">Cancel</a>
+                </div>
+            </form>
+
+        </div>
+
+    </section><!-- /.content -->
+</div>

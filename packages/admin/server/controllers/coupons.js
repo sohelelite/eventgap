@@ -38,7 +38,7 @@ exports.create = function(req, res) {
             }
             return res.status(400).send(errorMsg);
         }
-        res.jsonp(event);
+        res.jsonp(coupon);
     });
 };
 

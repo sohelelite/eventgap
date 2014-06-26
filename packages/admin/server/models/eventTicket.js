@@ -7,27 +7,42 @@ var mongoose    = require('mongoose'),
     Schema      = mongoose.Schema;
 
 /**
- * Coupons Schema
+ * Event Ticket Schema
  */
-var CouponsSchema = new Schema({
-    name: {
+var EventTicketSchema = new Schema({
+
+    event:{
+        type        : Schema.ObjectId,
+        ref         : 'Event'
+    },
+
+    ticket: {
         type        : String,
-        required    : true,
-        unique      : true,
         trim        : true
     },
-    code:{
-        type        : Number,
-        required    : true
+
+    name :{
+        type        : String
     },
+
+    description :{
+        type        : String
+    },
+
+    ticketType: {
+        type        : String
+    },
+
     amount:{
         type        : Number,
         required    : true
     },
-    percent:{
+
+    quantity :{
         type        : Number,
         required    : true
     },
+
     min:{
         type        : Number,
         default     : 1
@@ -37,34 +52,34 @@ var CouponsSchema = new Schema({
         type        : Number,
         default     : 1
     },
+
     startDate:{
         type        : Date,
         default     : Date.now
     },
+
     endDate:{
         type        : Date,
         default     : Date.now
-    },
-    eventTicket:{
-        type        : Schema.ObjectId,
-        ref         : 'EventTicket'
     }
+
 });
 
 /**
  * Validations
  */
-CouponsSchema.path('name').validate(function(name) {
+EventTicketSchema.path('name').validate(function(name) {
     return !!name;
 }, 'Name cannot be blank');
 
 /**
  * Statics
  */
-CouponsSchema.statics.load = function(id, cb) {
+EventTicketSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
     }).exec(cb);
 };
 
-mongoose.model('Coupon', CouponsSchema);
+mongoose.model('EventTicket', EventTicketSchema);
+

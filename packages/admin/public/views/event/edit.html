@@ -36,8 +36,8 @@
                     <div class="form-group" ng-class="{ 'has-error' : submitted && eventForm.organizer.$invalid }">
                         <label for="organizer">Organizer</label>
                         <select name="organizer" id="organizer" class="form-control"
-                                data-ng-model="organizer"
-                                ng-options="organizer.name for organizer in organizers" required>
+                                data-ng-model="event.organizer"
+                                ng-options="organizer._id as organizer.name for organizer in organizers" required>
                             <option value="">---- Select Organizer ----</option>
                         </select>
                         <div ng-show="submitted && eventForm.organizer.$invalid" class="help-block">

@@ -1,0 +1,57 @@
+<div data-ng-controller="CouponsController" data-ng-init="find()">
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Coupon</h1>
+
+        <ol class="breadcrumb">
+            <li>
+                <a href="/#!/admin/coupons/create">
+                    <i class="fa fa-plus"></i> Add
+                </a>
+            </li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <div class="box-header">
+                <div class="alert alert-info animated fadeIn" data-ng-hide="!coupons || coupons.length">
+                    <i class="fa fa-info"></i>
+                    <b>Alert!</b> No Coupon Found
+                </div>
+            </div>
+
+            <div class="box-body">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody data-ng-repeat="coupon in coupons">
+                    <tr>
+                        <td>{{ coupon.name }}</td>
+                        <td>{{ coupon.startDate | date : medium }}</td>
+                        <td>{{ coupon.endDate | date : medium }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-info" href="/#!/admin/coupons/{{coupon._id}}/edit">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
