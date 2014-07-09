@@ -14,6 +14,10 @@ module.exports = function(app, passport) {
     app.route('/register')
         .post(users.create);
 
+    // REST API Register User
+    app.route('/api/register')
+        .post(users.apiCreate);
+
     // Setting up the userId param
     app.param('userId', users.user);
 

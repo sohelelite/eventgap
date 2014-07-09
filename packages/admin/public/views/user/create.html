@@ -20,22 +20,6 @@
             <form name="userForm" data-ng-submit="create(userForm.$valid)" novalidate>
 
                 <div class="box-body">
-                    <div class="form-group" ng-class="{ 'has-error' : submitted && userForm.name.$invalid }">
-                        <label for="name">Name</label>
-                        <input name="name" type="text" class="form-control" data-ng-model="name" id="name" placeholder="Name" required>
-                        <div ng-show="submitted && userForm.name.$invalid" class="help-block">
-                            <p ng-show="userForm.name.$error.required">Name is required</p>
-                        </div>
-                    </div>
-
-                    <div class="form-group" ng-class="{ 'has-error' : submitted && userForm.username.$invalid }">
-                        <label for="username">User Name</label>
-                        <input name="username" type="text" class="form-control" data-ng-model="username" id="username" placeholder="User Name" ng-maxlength="20" required>
-                        <div ng-show="submitted && userForm.username.$invalid" class="help-block">
-                            <p ng-show="userForm.username.$error.required">User Name is required</p>
-                            <p ng-show="userForm.username.$error.maxlength" class="help-block">Username cannot be more than 20 characters</p>
-                        </div>
-                    </div>
 
                     <div class="form-group" ng-class="{ 'has-error' : submitted && userForm.email.$invalid }">
                         <label for="email">Email</label>
@@ -55,6 +39,246 @@
                         </div>
                     </div>
 
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && userForm.confirmPassword.$invalid }">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input name="confirmPassword" type="password" class="form-control" data-ng-model="confirmPassword" id="confirmPassword" ng-minlength="8" required>
+                        <div ng-show="submitted && userForm.confirmPassword.$invalid" class="help-block">
+                            <p ng-show="userForm.email.confirmPassword.required">Confirm Password is required</p>
+                            <p ng-show="userForm.email.confirmPassword.minlength">Confirm Password must be between 8-20 characters long</p>
+                        </div>
+                    </div>
+
+                    <h2 class="page-header">Contact Information</h2>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input name="firstName" type="text" class="form-control" data-ng-model="firstName" id="firstName" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input name="lastName" type="text" class="form-control" data-ng-model="lastName" id="lastName" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="homePhone">Home Phone</label>
+                                <input name="homePhone" type="text" class="form-control" data-ng-model="homePhone" id="homePhone">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="cellPhone">Cell Phone</label>
+                                <input name="cellPhone" type="text" class="form-control" data-ng-model="cellPhone" id="cellPhone">
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="page-header">Home Address</h2>
+
+                    <div class="form-group">
+                        <label for="address1Home">Address 1</label>
+                        <input name="address1Home" type="text" class="form-control" data-ng-model="address1Home" id="address1Home">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address2Home">Address 2</label>
+                        <input name="address2Home" type="text" class="form-control" data-ng-model="address2Home" id="address2Home">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cityHome">City</label>
+                        <input name="cityHome" type="text" class="form-control" data-ng-model="cityHome" id="cityHome">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="stateHome">State</label>
+                                <input name="stateHome" type="text" class="form-control" data-ng-model="stateHome" id="stateHome">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="zipCodeHome">Zip Code</label>
+                                <input name="zipCodeHome" type="text" class="form-control" data-ng-model="zipCodeHome" id="zipCodeHome">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="countryHome">Country</label>
+                        <input name="countryHome" type="text" class="form-control" data-ng-model="countryHome" id="countryHome">
+                    </div>
+
+                    <h2 class="page-header">Billing Address</h2>
+
+                    <div class="form-group">
+                        <label for="address1Billing">Address 1</label>
+                        <input name="address1Billing" type="text" class="form-control" data-ng-model="address1Billing" id="address1Billing">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address2Billing">Address 2</label>
+                        <input name="address2Billing" type="text" class="form-control" data-ng-model="address2Billing" id="address2Billing">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cityBilling">City</label>
+                        <input name="cityBilling" type="text" class="form-control" data-ng-model="cityBilling" id="cityBilling">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="stateBilling">State</label>
+                                <input name="stateBilling" type="text" class="form-control" data-ng-model="stateBilling" id="stateBilling">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="zipCodeBilling">Zip Code</label>
+                                <input name="zipCodeBilling" type="text" class="form-control" data-ng-model="zipCodeBilling" id="zipCodeBilling">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="countryBilling">Country</label>
+                        <input name="countryBilling" type="text" class="form-control" data-ng-model="countryBilling" id="countryBilling">
+                    </div>
+
+                    <h2 class="page-header">Shipping Address</h2>
+
+                    <div class="form-group">
+                        <label for="address1Shipping">Address 1</label>
+                        <input name="address1Shipping" type="text" class="form-control" data-ng-model="address1Shipping" id="address1Shipping">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address2Shipping">Address 2</label>
+                        <input name="address2Shipping" type="text" class="form-control" data-ng-model="address2Shipping" id="address2Shipping">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cityShipping">City</label>
+                        <input name="cityShipping" type="text" class="form-control" data-ng-model="cityShipping" id="cityShipping">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="stateShipping">State</label>
+                                <input name="stateShipping" type="text" class="form-control" data-ng-model="stateShipping" id="stateShipping">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="zipCodeShipping">Zip Code</label>
+                                <input name="zipCodeShipping" type="text" class="form-control" data-ng-model="zipCodeShipping" id="zipCodeShipping">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="countryShipping">Country</label>
+                        <input name="countryShipping" type="text" class="form-control" data-ng-model="countryShipping" id="countryShipping">
+                    </div>
+
+                    <h2 class="page-header">Work Address</h2>
+
+                    <div class="form-group">
+                        <label for="jobTitle">Job Title</label>
+                        <input name="jobTitle" type="text" class="form-control" data-ng-model="jobTitle" id="jobTitle">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input name="company" type="text" class="form-control" data-ng-model="company" id="company">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address1Work">Address 1</label>
+                        <input name="address1Work" type="text" class="form-control" data-ng-model="address1Work" id="address1Work">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address2Work">Address 2</label>
+                        <input name="address2Work" type="text" class="form-control" data-ng-model="address2Work" id="address2Work">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cityWork">City</label>
+                        <input name="cityWork" type="text" class="form-control" data-ng-model="cityWork" id="cityWork">
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="stateWork">State</label>
+                                <input name="stateWork" type="text" class="form-control" data-ng-model="stateWork" id="stateWork">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="zipCodeWork">Zip Code</label>
+                                <input name="zipCodeWork" type="text" class="form-control" data-ng-model="zipCodeWork" id="zipCodeWork">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="countryWork">Country</label>
+                        <input name="countryWork" type="text" class="form-control" data-ng-model="countryWork" id="countryWork">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input name="phone" type="text" class="form-control" data-ng-model="phone" id="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blog">Blog</label>
+                        <input name="blog" type="text" class="form-control" data-ng-model="blog" id="blog">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="website">Website</label>
+                        <input name="website" type="text" class="form-control" data-ng-model="website" id="website">
+                    </div>
+
+                    <h2 class="page-header">Other Information</h2>
+
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select name="gender" id="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthDate">Birth Date</label>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="input-group">
+                                    <input type="text" name="birthDate" id="birthDate" ng-model="birthDate" class="form-control"
+                                           datepicker-popup="{{format}}" is-open="openedBirthDate"/>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" ng-click="openBirthDate($event)">
+                                            <i class="fa fa-calendar"></i>
+                                        </button>
+                                      </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
 

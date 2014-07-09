@@ -16,7 +16,7 @@ var EventSchema = new Schema({
         unique      : true,
         trim        : true
     },
-    allias: {
+    alias: {
         type        : String,
         required    : true,
         unique      : true,
@@ -52,14 +52,14 @@ var EventSchema = new Schema({
         type        : Schema.ObjectId,
         ref         : 'Organizer'
     },
-    category:{
+    category:[{
         type        : Schema.ObjectId,
         ref         : 'Category'
-    },
-    topic:{
+   }],
+    topic:[{
         type        : Schema.ObjectId,
         ref         : 'Topic'
-    },
+    }],
     listingType :{
         type        : String,
         enum        : ['Public', 'Private']
@@ -82,7 +82,7 @@ EventSchema.path('title').validate(function(title) {
 EventSchema.statics.load = function(id, cb) {
     this.findOne({
         _id: id
-    }).exec(cb);
+    }).populate('topic').populate('category').exec(cb);
 };
 
 mongoose.model('Event', EventSchema);

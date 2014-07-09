@@ -15,32 +15,104 @@ var mongoose = require('mongoose'),
      return (this.provider && this.provider !== 'local') || (value && value.length);
  };
 
+/***
+ * Address Schema
+ */
+var Address = {
+   address1 : {
+       type : String
+   },
+    address2 :{
+        type : String
+    },
+    city :{
+        type : String
+    },
+    state :{
+        type : String
+    },
+    zipCode :{
+        type : String
+    },
+    country:{
+        type : String
+    }
+};
+
+var workAddress = {
+    jobTitle :{
+        type : String
+    },
+    company :{
+        type : String
+    },
+    address1 : {
+        type : String
+    },
+    address2 :{
+        type : String
+    },
+    city :{
+        type : String
+    },
+    state :{
+        type : String
+    },
+    zipCode :{
+        type : String
+    },
+    country:{
+        type : String
+    },
+    phone :{
+        type : String
+    },
+    blog:{
+        type : String
+    },
+    website:{
+        type : String
+    }
+};
+
+
 /**
  * User Schema
  */
 var UserSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
     email: {
         type: String,
         required: true,
+        unique: true,
         match: [/.+\@.+\..+/, 'Please enter a valid email']
     },
-    username: {
-        type: String,
-        unique: true,
-        required: true
+
+    firstName: {
+        type: String
     },
+
+    lastName: {
+        type: String
+    },
+
+    homePhone:{
+        type : String
+    },
+
+    cellPhone :{
+        type : String
+    },
+
     roles: {
         type: Array,
         default: ['authenticated']
     },
+
     hashed_password: {
         type: String,
         validate: [validatePresenceOf, 'Password cannot be blank']
     },
+
     provider: {
         type: String,
         default: 'local'
@@ -50,7 +122,19 @@ var UserSchema = new Schema({
     twitter: {},
     github: {},
     google: {},
-    linkedin: {}
+    linkedin: {},
+
+    homeAddress     : Address,
+    billingAddress  : Address,
+    shippingAddress : Address,
+    workAddress     : workAddress,
+    gender :{
+        type        : String,
+        enum        : ['Male', 'Female']
+    },
+    birthDate:{
+        type        : Date
+    }
 });
 
 /**
@@ -134,5 +218,6 @@ UserSchema.methods = {
         return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
     }
 };
+
 
 mongoose.model('User', UserSchema);

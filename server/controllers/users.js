@@ -38,6 +38,35 @@ exports.session = function(req, res) {
     res.redirect('/');
 };
 
+/***
+ * Create User through REST API
+ */
+exports.apiCreate = function (req, res, next) {
+    var user = new User(req.body);
+    user.provider = 'local';
+    user.roles = ['authenticated'];
+
+    user.save(function(err) {
+        if (err) {
+            switch (err.code) {
+                case 11000:
+                case 11001:
+                    res.status(400).send('Email already exsits');
+                    break;
+                default:
+                    res.status(400).send('Please fill all the required fields');
+            }
+
+            return res.status(400);
+        }
+        req.logIn(user, function(err) {
+            if (err) return next(err);
+            return res.redirect('/');
+        });
+        res.status(200);
+    });
+};
+
 /**
  * Create user
  */
@@ -60,12 +89,13 @@ exports.create = function(req, res, next) {
 
     // Hard coded for now. Will address this with the user permissions system in v0.3.5
     user.roles = ['authenticated'];
+    console.log(user);
     user.save(function(err) {
         if (err) {
             switch (err.code) {
                 case 11000:
                 case 11001:
-                    res.status(400).send('Username already taken');
+                    res.status(400).send('Email already exsits');
                     break;
                 default:
                     res.status(400).send('Please fill all the required fields');

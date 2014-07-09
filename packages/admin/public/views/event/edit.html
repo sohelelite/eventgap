@@ -25,11 +25,11 @@
                         </div>
                     </div>
 
-                    <div class="form-group" ng-class="{ 'has-error' : submitted && eventForm.allias.$invalid }">
-                        <label for="allias">Allias</label>
-                        <input name="allias" type="text" class="form-control" data-ng-model="event.allias" id="allias" placeholder="Allias" required>
-                        <div ng-show="submitted && eventForm.allias.$invalid" class="help-block">
-                            <p ng-show="eventForm.allias.$error.required">Allias is required</p>
+                    <div class="form-group" ng-class="{ 'has-error' : submitted && eventForm.alias.$invalid }">
+                        <label for="alias">alias</label>
+                        <input name="alias" type="text" class="form-control" data-ng-model="event.alias" id="alias" placeholder="alias" required>
+                        <div ng-show="submitted && eventForm.alias.$invalid" class="help-block">
+                            <p ng-show="eventForm.alias.$error.required">alias is required</p>
                         </div>
                     </div>
 
@@ -103,6 +103,18 @@
                         <label for="description">Description</label>
                         <textarea name="description" id="description" data-ng-model="event.description" placeholder="Enter Description" class="form-control"></textarea>
                     </div>
+
+                    <div class="form-group">
+                        <label for="">Topic</label>
+                        <select multiple>
+                            <option ng-repeat="singletopic in event.topic" value="{{singletopic._id}}">{{singletopic.name}}</option>
+                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Category</label>
+                    </div>
+
                 </div>
 
                 <div class="box-footer">

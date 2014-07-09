@@ -16,6 +16,7 @@ module.exports = function(Events, app, auth) {
 
     //REST API
     app.route('/api/events')
-        .get(events.all);
+        .get(events.all)
+        .post(events.create);
 
 };

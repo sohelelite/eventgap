@@ -24,7 +24,7 @@ exports.event = function(req, res, next, id) {
  */
 exports.create = function(req, res) {
     var event = new Event(req.body);
-
+    console.log(req.body);
     event.save(function(err) {
         var errorMsg = '';
         if (err) {
@@ -36,7 +36,9 @@ exports.create = function(req, res) {
                 default:
                     errorMsg ='Error occured while processing your request.';
             }
+            console.log(err);
             return res.status(400).send(errorMsg);
+
         }
         res.jsonp(event);
     });

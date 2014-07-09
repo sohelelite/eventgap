@@ -38,8 +38,8 @@
                     <tbody data-ng-repeat="event in events">
                     <tr>
                         <td>{{ event.title }}</td>
-                        <td>{{ event.startDate | date : medium }}</td>
-                        <td>{{ event.endDate | date : medium }}</td>
+                        <td>{{ event.startDate | date : long }}</td>
+                        <td>{{ event.endDate | date : long }}</td>
                         <td>
                             <a class="btn btn-sm btn-info" href="/#!/admin/events/{{event._id}}/edit">
                                 <i class="fa fa-edit"></i>
