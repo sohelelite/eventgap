@@ -29,24 +29,6 @@
                 </div>
             </div>
 
-            <div class="form-group" ng-class="{ 'has-error' : submitted && userForm.password.$invalid }">
-                <label for="password">Password</label>
-                <input name="password" type="password" class="form-control" data-ng-model="user.password" id="password" ng-minlength="8" required>
-                <div ng-show="submitted && userForm.password.$invalid" class="help-block">
-                    <p ng-show="userForm.email.password.required">Password is required</p>
-                    <p ng-show="userForm.email.password.minlength">Password must be between 8-20 characters long</p>
-                </div>
-            </div>
-
-            <div class="form-group" ng-class="{ 'has-error' : submitted && userForm.confirmPassword.$invalid }">
-                <label for="confirmPassword">Confirm Password</label>
-                <input name="confirmPassword" type="password" class="form-control" data-ng-model="user.confirmPassword" id="confirmPassword" ng-minlength="8" required>
-                <div ng-show="submitted && userForm.confirmPassword.$invalid" class="help-block">
-                    <p ng-show="userForm.email.confirmPassword.required">Confirm Password is required</p>
-                    <p ng-show="userForm.email.confirmPassword.minlength">Confirm Password must be between 8-20 characters long</p>
-                </div>
-            </div>
-
             <h2 class="page-header">Contact Information</h2>
 
             <div class="row">
@@ -83,173 +65,173 @@
 
             <div class="form-group">
                 <label for="address1Home">Address 1</label>
-                <input name="address1Home" type="text" class="form-control" data-ng-model="user.homeAddress.address1Home" id="address1Home">
+                <input name="address1Home" type="text" class="form-control" data-ng-model="user.homeAddress.address1" id="address1Home">
             </div>
 
             <div class="form-group">
                 <label for="address2Home">Address 2</label>
-                <input name="address2Home" type="text" class="form-control" data-ng-model="user.address2Home" id="address2Home">
+                <input name="address2Home" type="text" class="form-control" data-ng-model="user.homeAddress.address2" id="address2Home">
             </div>
 
             <div class="form-group">
                 <label for="cityHome">City</label>
-                <input name="cityHome" type="text" class="form-control" data-ng-model="cityHome" id="cityHome">
+                <input name="cityHome" type="text" class="form-control" data-ng-model="user.homeAddress.city" id="cityHome">
             </div>
 
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="stateHome">State</label>
-                        <input name="stateHome" type="text" class="form-control" data-ng-model="stateHome" id="stateHome">
+                        <input name="stateHome" type="text" class="form-control" data-ng-model="user.homeAddress.state" id="stateHome">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="zipCodeHome">Zip Code</label>
-                        <input name="zipCodeHome" type="text" class="form-control" data-ng-model="zipCodeHome" id="zipCodeHome">
+                        <input name="zipCodeHome" type="text" class="form-control" data-ng-model="user.homeAddress.zipCode" id="zipCodeHome">
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="countryHome">Country</label>
-                <input name="countryHome" type="text" class="form-control" data-ng-model="countryHome" id="countryHome">
+                <input name="countryHome" type="text" class="form-control" data-ng-model="user.homeAddress.country" id="countryHome">
             </div>
 
             <h2 class="page-header">Billing Address</h2>
 
             <div class="form-group">
                 <label for="address1Billing">Address 1</label>
-                <input name="address1Billing" type="text" class="form-control" data-ng-model="address1Billing" id="address1Billing">
+                <input name="address1Billing" type="text" class="form-control" data-ng-model="user.billingAddress.address1" id="address1Billing">
             </div>
 
             <div class="form-group">
                 <label for="address2Billing">Address 2</label>
-                <input name="address2Billing" type="text" class="form-control" data-ng-model="address2Billing" id="address2Billing">
+                <input name="address2Billing" type="text" class="form-control" data-ng-model="user.billingAddress.address2" id="address2Billing">
             </div>
 
             <div class="form-group">
                 <label for="cityBilling">City</label>
-                <input name="cityBilling" type="text" class="form-control" data-ng-model="cityBilling" id="cityBilling">
+                <input name="cityBilling" type="text" class="form-control" data-ng-model="user.billingAddress.city" id="cityBilling">
             </div>
 
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="stateBilling">State</label>
-                        <input name="stateBilling" type="text" class="form-control" data-ng-model="stateBilling" id="stateBilling">
+                        <input name="stateBilling" type="text" class="form-control" data-ng-model="user.billingAddress.state" id="stateBilling">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="zipCodeBilling">Zip Code</label>
-                        <input name="zipCodeBilling" type="text" class="form-control" data-ng-model="zipCodeBilling" id="zipCodeBilling">
+                        <input name="zipCodeBilling" type="text" class="form-control" data-ng-model="user.billingAddress.zipCode" id="zipCodeBilling">
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="countryBilling">Country</label>
-                <input name="countryBilling" type="text" class="form-control" data-ng-model="countryBilling" id="countryBilling">
+                <input name="countryBilling" type="text" class="form-control" data-ng-model="user.billingAddress.country" id="countryBilling">
             </div>
 
             <h2 class="page-header">Shipping Address</h2>
 
             <div class="form-group">
                 <label for="address1Shipping">Address 1</label>
-                <input name="address1Shipping" type="text" class="form-control" data-ng-model="address1Shipping" id="address1Shipping">
+                <input name="address1Shipping" type="text" class="form-control" data-ng-model="user.shippingAddress.address1" id="address1Shipping">
             </div>
 
             <div class="form-group">
                 <label for="address2Shipping">Address 2</label>
-                <input name="address2Shipping" type="text" class="form-control" data-ng-model="address2Shipping" id="address2Shipping">
+                <input name="address2Shipping" type="text" class="form-control" data-ng-model="user.shippingAddress.address2" id="address2Shipping">
             </div>
 
             <div class="form-group">
                 <label for="cityShipping">City</label>
-                <input name="cityShipping" type="text" class="form-control" data-ng-model="cityShipping" id="cityShipping">
+                <input name="cityShipping" type="text" class="form-control" data-ng-model="user.shippingAddress.city" id="cityShipping">
             </div>
 
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="stateShipping">State</label>
-                        <input name="stateShipping" type="text" class="form-control" data-ng-model="stateShipping" id="stateShipping">
+                        <input name="stateShipping" type="text" class="form-control" data-ng-model="user.shippingAddress.state" id="stateShipping">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="zipCodeShipping">Zip Code</label>
-                        <input name="zipCodeShipping" type="text" class="form-control" data-ng-model="zipCodeShipping" id="zipCodeShipping">
+                        <input name="zipCodeShipping" type="text" class="form-control" data-ng-model="user.shippingAddress.zipCode" id="zipCodeShipping">
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="countryShipping">Country</label>
-                <input name="countryShipping" type="text" class="form-control" data-ng-model="countryShipping" id="countryShipping">
+                <input name="countryShipping" type="text" class="form-control" data-ng-model="user.shippingAddress.country" id="countryShipping">
             </div>
 
             <h2 class="page-header">Work Address</h2>
 
             <div class="form-group">
                 <label for="jobTitle">Job Title</label>
-                <input name="jobTitle" type="text" class="form-control" data-ng-model="jobTitle" id="jobTitle">
+                <input name="jobTitle" type="text" class="form-control" data-ng-model="user.workAddress.jobTitle" id="jobTitle">
             </div>
 
             <div class="form-group">
                 <label for="company">Company</label>
-                <input name="company" type="text" class="form-control" data-ng-model="company" id="company">
+                <input name="company" type="text" class="form-control" data-ng-model="user.workAddress.company" id="company">
             </div>
 
             <div class="form-group">
                 <label for="address1Work">Address 1</label>
-                <input name="address1Work" type="text" class="form-control" data-ng-model="address1Work" id="address1Work">
+                <input name="address1Work" type="text" class="form-control" data-ng-model="user.workAddress.address1" id="address1Work">
             </div>
 
             <div class="form-group">
                 <label for="address2Work">Address 2</label>
-                <input name="address2Work" type="text" class="form-control" data-ng-model="address2Work" id="address2Work">
+                <input name="address2Work" type="text" class="form-control" data-ng-model="user.workAddress.address2" id="address2Work">
             </div>
 
             <div class="form-group">
                 <label for="cityWork">City</label>
-                <input name="cityWork" type="text" class="form-control" data-ng-model="cityWork" id="cityWork">
+                <input name="cityWork" type="text" class="form-control" data-ng-model="user.workAddress.city" id="cityWork">
             </div>
 
             <div class="row">
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="stateWork">State</label>
-                        <input name="stateWork" type="text" class="form-control" data-ng-model="stateWork" id="stateWork">
+                        <input name="stateWork" type="text" class="form-control" data-ng-model="user.workAddress.state" id="stateWork">
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="zipCodeWork">Zip Code</label>
-                        <input name="zipCodeWork" type="text" class="form-control" data-ng-model="zipCodeWork" id="zipCodeWork">
+                        <input name="zipCodeWork" type="text" class="form-control" data-ng-model="user.workAddress.zipCode" id="zipCodeWork">
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label for="countryWork">Country</label>
-                <input name="countryWork" type="text" class="form-control" data-ng-model="countryWork" id="countryWork">
+                <input name="countryWork" type="text" class="form-control" data-ng-model="user.workAddress.country" id="countryWork">
             </div>
 
             <div class="form-group">
                 <label for="phone">Phone</label>
-                <input name="phone" type="text" class="form-control" data-ng-model="phone" id="phone">
+                <input name="phone" type="text" class="form-control" data-ng-model="user.workAddress.phone" id="phone">
             </div>
 
             <div class="form-group">
                 <label for="blog">Blog</label>
-                <input name="blog" type="text" class="form-control" data-ng-model="blog" id="blog">
+                <input name="blog" type="text" class="form-control" data-ng-model="user.workAddress.blog" id="blog">
             </div>
 
             <div class="form-group">
                 <label for="website">Website</label>
-                <input name="website" type="text" class="form-control" data-ng-model="website" id="website">
+                <input name="website" type="text" class="form-control" data-ng-model="user.workAddress.website" id="website">
             </div>
 
             <h2 class="page-header">Other Information</h2>
@@ -267,7 +249,7 @@
                 <div class="row">
                     <div class="col-md-2">
                         <div class="input-group">
-                            <input type="text" name="birthDate" id="birthDate" ng-model="birthDate" class="form-control"
+                            <input type="text" name="birthDate" id="birthDate" ng-model="user.birthDate" class="form-control"
                                    datepicker-popup="{{format}}" is-open="openedBirthDate"/>
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-default" ng-click="openBirthDate($event)">

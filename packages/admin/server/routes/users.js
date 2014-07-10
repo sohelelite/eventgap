@@ -19,6 +19,11 @@ module.exports = function(Users, app, auth, passport) {
         .get(users.show)
         .put(auth.requiresLogin, hasAuthorization, users.update);
 
+    app.route('api/users/:userId')
+        .get(users.show)
+        .put(users.update);
+
+
     // Finish with setting up the articleId param
     app.param('userId', users.user);
 

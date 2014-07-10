@@ -91,7 +91,6 @@ exports.all = function(req, res) {
  * Get Category By Parent Name
  */
 exports.parent = function(req, res) {
-    console.log(req.params.parentName);
     Category.find({ 'parent' : req.params.parentName }).exec(function(err, category) {
         if (err) {
             return res.jsonp(500, {
